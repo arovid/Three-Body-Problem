@@ -37,31 +37,117 @@ end
 
 
 % Plotting
-tiledlayout(2,2)
+fig1 = figure(1);
+fig1.Position = [100 100 1600 1200];
+tiledlayout(2,2,TileSpacing="compact")
 nexttile
-plot(log10(h(21:N)),RK4Conv.TwoLoop.endpoints(1,21:N))
+plot(log10(h(1:N)),RK4Conv.TwoLoop.endpoints(1,:),"LineWidth",2)
 hold on 
-plot(log10(h(21:N)),RK4Conv.ThreeLoop.endpoints(1,21:N))
-plot(log10(h(21:N)),RK4Conv.FourLoop.endpoints(1,21:N))
+plot(log10(h(1:N)),RK4Conv.ThreeLoop.endpoints(1,:),"LineWidth",2)
+plot(log10(h(1:N)),RK4Conv.FourLoop.endpoints(1,:),"LineWidth",2)
 set(gca, 'XDir', 'reverse')
+fontsize(15,"points")
+set(0,'defaulttextinterpreter','latex')
+ylabel('$$u_1 [-]$$')
+xlabel('$$ \lg(h) [-]$$')
+legend 'Two loop' 'Three loop' 'FourLoop'
+set(gca, 'TickLabelInterpreter','latex')
 
 nexttile
-plot(log10(h(21:N)),RK4Conv.TwoLoop.endpoints(2,21:N))
+plot(log10(h(1:N)),RK4Conv.TwoLoop.endpoints(2,:),"LineWidth",2)
 hold on 
-plot(log10(h(21:N)),RK4Conv.ThreeLoop.endpoints(2,21:N))
-plot(log10(h(21:N)),RK4Conv.FourLoop.endpoints(2,21:N))
+plot(log10(h(1:N)),RK4Conv.ThreeLoop.endpoints(2,:),"LineWidth",2)
+plot(log10(h(1:N)),RK4Conv.FourLoop.endpoints(2,:),"LineWidth",2)
 set(gca, 'XDir', 'reverse')
+fontsize(15,"points")
+set(0,'defaulttextinterpreter','latex')
+ylabel('$$u_2 [-]$$')
+xlabel('$$ \lg(h) [-]$$')
+legend 'Two loop' 'Three loop' 'FourLoop'
+set(gca, 'TickLabelInterpreter','latex')
 
 nexttile
-plot(log10(h(21:N)),RK4Conv.TwoLoop.endpoints(3,21:N))
+plot(log10(h(1:N)),RK4Conv.TwoLoop.endpoints(3,:),"LineWidth",2)
 hold on 
-plot(log10(h(21:N)),RK4Conv.ThreeLoop.endpoints(3,21:N))
-plot(log10(h(21:N)),RK4Conv.FourLoop.endpoints(3,21:N))
+plot(log10(h(1:N)),RK4Conv.ThreeLoop.endpoints(3,:),"LineWidth",2)
+plot(log10(h(1:N)),RK4Conv.FourLoop.endpoints(3,:),"LineWidth",2)
 set(gca, 'XDir', 'reverse')
+fontsize(15,"points")
+set(0,'defaulttextinterpreter','latex')
+ylabel('$$u_3 [-]$$')
+xlabel('$$ \lg(h) [-]$$')
+legend 'Two loop' 'Three loop' 'FourLoop'
+set(gca, 'TickLabelInterpreter','latex')
 
 nexttile
-plot(log10(h(21:N)),RK4Conv.TwoLoop.endpoints(4,21:N))
+plot(log10(h(1:N)),RK4Conv.TwoLoop.endpoints(4,:),"LineWidth",2)
 hold on  
-plot(log10(h(21:N)),RK4Conv.ThreeLoop.endpoints(4,21:N))
-plot(log10(h(21:N)),RK4Conv.FourLoop.endpoints(4,21:N))
+plot(log10(h(1:N)),RK4Conv.ThreeLoop.endpoints(4,:),"LineWidth",2)
+plot(log10(h(1:N)),RK4Conv.FourLoop.endpoints(4,:),"LineWidth",2)
 set(gca, 'XDir', 'reverse')
+fontsize(15,"points")
+set(0,'defaulttextinterpreter','latex')
+ylabel('$$u_4 [-]$$')
+xlabel('$$ \lg(h) [-]$$')
+legend 'Two loop' 'Three loop' 'Four Loop'
+set(gca, 'TickLabelInterpreter','latex')
+
+
+fig2 = figure(2);
+fig2.Position = [100 100 1600 1200];
+tiledlayout(2,2,TileSpacing="tight")
+nexttile
+plot(log10(h(21:N)),RK4Conv.TwoLoop.endpoints(1,21:N),"LineWidth",2)
+hold on 
+plot(log10(h(21:N)),RK4Conv.ThreeLoop.endpoints(1,21:N),"LineWidth",2)
+plot(log10(h(21:N)),RK4Conv.FourLoop.endpoints(1,21:N),"LineWidth",2)
+set(gca, 'XDir', 'reverse')
+fontsize(15,"points")
+set(0,'defaulttextinterpreter','latex')
+ylabel('$$u_1 [-]$$')
+xlabel('$$ \lg(h) [-]$$')
+legend 'Two loop' 'Three loop' 'Four Loop'
+set(gca, 'TickLabelInterpreter','latex')
+
+nexttile
+plot(log10(h(21:N)),RK4Conv.TwoLoop.endpoints(2,21:N),"LineWidth",2)
+hold on 
+plot(log10(h(21:N)),RK4Conv.ThreeLoop.endpoints(2,21:N),"LineWidth",2)
+plot(log10(h(21:N)),RK4Conv.FourLoop.endpoints(2,21:N),"LineWidth",2)
+set(gca, 'XDir', 'reverse')
+fontsize(15,"points")
+set(0,'defaulttextinterpreter','latex')
+ylabel('$$u_2 [-]$$')
+xlabel('$$ \lg(h) [-]$$')
+legend 'Two loop' 'Three loop' 'Four Loop'
+set(gca, 'TickLabelInterpreter','latex')
+
+nexttile
+plot(log10(h(21:N)),RK4Conv.TwoLoop.endpoints(3,21:N),"LineWidth",2)
+hold on 
+plot(log10(h(21:N)),RK4Conv.ThreeLoop.endpoints(3,21:N),"LineWidth",2)
+plot(log10(h(21:N)),RK4Conv.FourLoop.endpoints(3,21:N),"LineWidth",2)
+set(gca, 'XDir', 'reverse')
+fontsize(15,"points")
+set(0,'defaulttextinterpreter','latex')
+ylabel('$$u_3 [-]$$')
+xlabel('$$ \lg(h) [-]$$')
+legend 'Two loop' 'Three loop' 'FourLoop'
+set(gca, 'TickLabelInterpreter','latex')
+
+nexttile
+plot(log10(h(21:N)),RK4Conv.TwoLoop.endpoints(4,21:N),"LineWidth",2)
+hold on  
+plot(log10(h(21:N)),RK4Conv.ThreeLoop.endpoints(4,21:N),"LineWidth",2)
+plot(log10(h(21:N)),RK4Conv.FourLoop.endpoints(4,21:N),"LineWidth",2)
+set(gca, 'XDir', 'reverse')
+fontsize(15,"points")
+set(0,'defaulttextinterpreter','latex')
+ylabel('$$u_4 [-]$$')
+xlabel('$$ \lg(h) [-]$$')
+legend 'Two loop' 'Three loop' 'Four Loop'
+set(gca, 'TickLabelInterpreter','latex')
+
+
+exportgraphics(fig1, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RK4Convergence_full.pdf', 'ContentType', 'vector');
+exportgraphics(fig2, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RK4Convergence_zoom.pdf', 'ContentType', 'vector');

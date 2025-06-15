@@ -13,7 +13,7 @@ y = Y(:,1);
 h = (tEnd-tInit)/1000; % Guess for initial step size
  
 nsteps = 0;
-nfeval = 0;
+nfevals = 0;
 nfailed = 0;
 
 % Computing the numerical approximation using RK4:
@@ -49,7 +49,7 @@ while t < tEnd
     if t+h > tEnd
         h = tEnd - t;
     end
-    nfeval = nfeval + 6;
+    nfevals = nfevals + 6;
     
 end
 
@@ -59,7 +59,7 @@ end
 out.t = T;
 out.y = Y;
 out.z = Z;
-out.stats.nfeval = nfeval;
+out.stats.nfevals = nfevals;
 out.stats.nsteps = nsteps;
 out.stats.nfailed = nfailed;
 end
