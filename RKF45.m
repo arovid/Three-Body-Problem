@@ -1,6 +1,4 @@
 function out = RKF45(fun,tInit,tEnd,yInit,RelTol,AbsTol) 
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
 
 T = tInit;  % Grid
 Y = yInit;  % Vector of the numerical approximation (4th order)
@@ -9,14 +7,12 @@ Z = yInit;  % Vector of the numerical approximation (5th order)
 t = T(1);
 y = Y(:,1);
 
-
 h = (tEnd-tInit)/1000; % Guess for initial step size
  
 nsteps = 0;
 nfevals = 0;
 nfailed = 0;
 
-% Computing the numerical approximation using RK4:
 while t < tEnd
     k1 = fun(t, y);
     k2 = fun(t + 1/4*h, y + h*(1/4*k1));
@@ -44,7 +40,7 @@ while t < tEnd
     end
 
     frac = 0.9;
-    h = min(frac*h*(etol./e).^(1/5));    
+    h = min(h*(frac*etol./e).^(1/5));    
     
     if t+h > tEnd
         h = tEnd - t;
@@ -53,9 +49,6 @@ while t < tEnd
     
 end
 
-% out.t = cell2mat(T);
-% out.y = cell2mat(Y);
-% out.z = cell2mat(Z);
 out.t = T;
 out.y = Y;
 out.z = Z;

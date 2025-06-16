@@ -1,7 +1,7 @@
 clear
 clc
 format long
-clf
+close all
 
 % Set the initial conditions and parameters for the simulations
 tInit = [0; 0; 0];
@@ -18,6 +18,10 @@ RK4Conv.TwoLoop.endpoints = zeros(4,N);
 RK4Conv.ThreeLoop.endpoints = zeros(4,N);
 RK4Conv.FourLoop.endpoints = zeros(4,N);
 
+RK4Conv.TwoLoop.nfevals = zeros(1,N);
+RK4Conv.ThreeLoop.nfevals = zeros(1,N);
+RK4Conv.FourLoop.nfevals = zeros(1,N);
+
 for i = 1:N
 
 % Two loops
@@ -33,12 +37,17 @@ RK4Conv.TwoLoop.endpoints(:,i) = TwoLoop.RK4.y(:,end);
 RK4Conv.ThreeLoop.endpoints(:,i) = ThreeLoop.RK4.y(:,end);
 RK4Conv.FourLoop.endpoints(:,i) = FourLoop.RK4.y(:,end);
 
+
+RK4Conv.TwoLoop.nfevals(i) = TwoLoop.RK4.nfevals;
+RK4Conv.ThreeLoop.nfevals(i) = ThreeLoop.RK4.nfevals;
+RK4Conv.FourLoop.nfevals(i) = FourLoop.RK4.nfevals;
+
 end
 
 
 % Plotting
 fig1 = figure(1);
-fig1.Position = [100 100 1600 1200];
+fig1.Position = [100 100 1200 800];
 tiledlayout(2,2,TileSpacing="compact")
 nexttile
 plot(log10(h(1:N)),RK4Conv.TwoLoop.endpoints(1,:),"LineWidth",2)
@@ -94,7 +103,7 @@ set(gca, 'TickLabelInterpreter','latex')
 
 
 fig2 = figure(2);
-fig2.Position = [100 100 1600 1200];
+fig2.Position = [100 100 1200 800];
 tiledlayout(2,2,TileSpacing="tight")
 nexttile
 plot(log10(h(21:N)),RK4Conv.TwoLoop.endpoints(1,21:N),"LineWidth",2)
@@ -149,5 +158,21 @@ legend 'Two loop' 'Three loop' 'Four Loop'
 set(gca, 'TickLabelInterpreter','latex')
 
 
-exportgraphics(fig1, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RK4Convergence_full.pdf', 'ContentType', 'vector');
-exportgraphics(fig2, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RK4Convergence_zoom.pdf', 'ContentType', 'vector');
+fig3 = figure(3);
+fig3.Position = [100 100 1600 600];
+plot(log10(h(1:N)),RK4Conv.TwoLoop.nfevals,"LineWidth",2)
+hold on  
+grid on
+plot(log10(h(1:N)),RK4Conv.ThreeLoop.nfevals,"LineWidth",2)
+plot(log10(h(1:N)),RK4Conv.FourLoop.nfevals,"LineWidth",2)
+set(gca, 'XDir', 'reverse')
+fontsize(15,"points")
+set(0,'defaulttextinterpreter','latex')
+ylabel('Function evaluations')
+xlabel('$$ \lg(h) [-]$$')
+legend 'Two loop' 'Three loop' 'Four Loop'
+set(gca, 'TickLabelInterpreter','latex')
+
+exportgraphics(fig1, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RK4Convergence_full.png','Resolution',300);
+exportgraphics(fig2, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RK4Convergence_zoom.png', 'Resolution',300);
+exportgraphics(fig3, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RK4fevals.png', 'Resolution',300);

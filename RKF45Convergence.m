@@ -10,9 +10,9 @@ u1Init = [1.2; 0.994; 0.994];
 u2dInit = [-1.049357510; -2.0317326295573368357302057924; -2.00158510637908252240537862224];
 ICs = @(i)[u1Init(i); 0; 0; u2dInit(i)];
 
-Tol =  @(i) 1e-3./10.^((i-1)/5);
-Ni = 16;
-Nj = 16;
+Tol =  @(i) 1e-4./10.^((i-1)/4);
+Ni = 17;
+Nj = 17;
 
 RKF45Conv.TwoLoop.endpoints = zeros(4,Ni,Nj);
 RKF45Conv.ThreeLoop.endpoints = zeros(4,Ni,Nj);
@@ -244,7 +244,7 @@ ylabel('lg(RTOL) [-]')
 zlabel('$$u_4 [-]$$')
 
 fig7 = figure(7);
-fig7.Position = [100 100 1600 800];
+fig7.Position = [100 100 1600 600];
 tiledlayout(1,3,TileSpacing="tight")
 nexttile
 surf(log10(Tol(1:Ni)),log10(Tol(1:Nj)),RKF45Conv.TwoLoop.nsteps(:,:)')
@@ -272,7 +272,7 @@ ylabel('lg(RTOL) [-]')
 title('Function evaluations')
 
 fig8 = figure(8);
-fig8.Position = [100 100 1600 800];
+fig8.Position = [100 100 1600 600];
 tiledlayout(1,3,TileSpacing="tight")
 nexttile
 surf(log10(Tol(1:Ni)),log10(Tol(1:Nj)),RKF45Conv.ThreeLoop.nsteps(:,:)')
@@ -300,7 +300,7 @@ ylabel(' lg(RTOL) [-]')
 title('Function evaluations')
 
 fig9 = figure(9);
-fig9.Position = [100 100 1600 800];
+fig9.Position = [100 100 1600 600];
 tiledlayout(1,3,TileSpacing="tight")
 nexttile
 surf(log10(Tol(1:Ni)),log10(Tol(1:Nj)),RKF45Conv.FourLoop.nsteps(:,:)')
@@ -328,15 +328,15 @@ ylabel('lg(RTOL) [-]')
 title('Function evaluations')
 
 
-exportgraphics(fig1, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_TwoLoop.pdf', 'ContentType', 'vector');
-exportgraphics(fig2, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_ThreeLoop.pdf', 'ContentType', 'vector');
-exportgraphics(fig3, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_FourLoop.pdf', 'ContentType', 'vector');
+exportgraphics(fig1, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_TwoLoop.png', 'ContentType', 'vector');
+exportgraphics(fig2, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_ThreeLoop.png', 'ContentType', 'vector');
+exportgraphics(fig3, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_FourLoop.png', 'ContentType', 'vector');
 
-exportgraphics(fig4, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_TwoLoop_zoom.pdf', 'ContentType', 'vector');
-exportgraphics(fig5, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_ThreeLoop_zoom.pdf', 'ContentType', 'vector');
-exportgraphics(fig6, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_FourLoop_zoom.pdf', 'ContentType', 'vector');
+exportgraphics(fig4, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_TwoLoop_zoom.png', 'ContentType', 'vector');
+exportgraphics(fig5, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_ThreeLoop_zoom.png', 'ContentType', 'vector');
+exportgraphics(fig6, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Convergence_FourLoop_zoom.png', 'ContentType', 'vector');
 
-exportgraphics(fig7, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Stats_TwoLoop.pdf', 'ContentType', 'vector');
-exportgraphics(fig8, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Stats_ThreeLoop.pdf', 'ContentType', 'vector');
-exportgraphics(fig9, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Stats_FourLoop.pdf', 'ContentType', 'vector');
+exportgraphics(fig7, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Stats_TwoLoop.png', 'ContentType', 'vector');
+exportgraphics(fig8, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Stats_ThreeLoop.png', 'ContentType', 'vector');
+exportgraphics(fig9, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\RKF45_Stats_FourLoop.png', 'ContentType', 'vector');
 

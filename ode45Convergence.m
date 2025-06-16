@@ -154,7 +154,7 @@ zlabel('$$u_4 [-]$$')
 
 
 fig4 = figure(4);
-fig4.Position = [100 100 1600 800];
+fig4.Position = [100 100 1600 600];
 tiledlayout(1,3,TileSpacing="tight")
 nexttile
 surf(log10(Tol(1:Ni)),log10(Tol(1:Nj)),ode45Conv.TwoLoop.nsteps(:,:)')
@@ -182,7 +182,7 @@ ylabel('lg(RTOL) [-]')
 title('Function evaluations')
 
 fig5 = figure(5);
-fig5.Position = [100 100 1600 800];
+fig5.Position = [100 100 1600 600];
 tiledlayout(1,3,TileSpacing="tight")
 nexttile
 surf(log10(Tol(1:Ni)),log10(Tol(1:Nj)),ode45Conv.ThreeLoop.nsteps(:,:)')
@@ -210,7 +210,7 @@ ylabel('lg(RTOL) [-]')
 title('Function evaluations')
 
 fig6 = figure(6);
-fig6.Position = [100 100 1600 800];
+fig6.Position = [100 100 1600 600];
 tiledlayout(1,3,TileSpacing="compact")
 nexttile
 surf(log10(Tol(1:Ni)),log10(Tol(1:Nj)),ode45Conv.FourLoop.nsteps(:,:)')
@@ -237,10 +237,10 @@ xlabel('lg(ATOL) [-]')
 ylabel('lg(RTOL) [-]')
 title('Function evaluations')
 
-exportgraphics(fig1, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Convergence_TwoLoop.pdf', 'ContentType', 'vector');
-exportgraphics(fig2, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Convergence_ThreeLoop.pdf', 'ContentType', 'vector');
-exportgraphics(fig3, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Convergence_FourLoop.pdf', 'ContentType', 'vector');
+exportgraphics(fig1, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Convergence_TwoLoop.png', 'ContentType', 'vector');
+exportgraphics(fig2, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Convergence_ThreeLoop.png', 'ContentType', 'vector');
+exportgraphics(fig3, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Convergence_FourLoop.png', 'ContentType', 'vector');
 
-exportgraphics(fig4, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Stats_TwoLoop.pdf', 'ContentType', 'vector');
-exportgraphics(fig5, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Stats_ThreeLoop.pdf', 'ContentType', 'vector');
-exportgraphics(fig6, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Stats_FourLoop.pdf', 'ContentType', 'vector');
+exportgraphics(fig4, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Stats_TwoLoop.png', 'ContentType', 'vector');
+exportgraphics(fig5, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Stats_ThreeLoop.png', 'ContentType', 'vector');
+exportgraphics(fig6, 'Y:\Egyetem\MSc\1Semester\Math\project\Three-Body-Problem\figures\ode45_Stats_FourLoop.png', 'ContentType', 'vector');
